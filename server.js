@@ -68,6 +68,24 @@ app.post('/postform', async (req, res) => {
     }
 });
 
+// Get data
+app.get('/getdata', async (_, res) => {
+    try {
+        await db.read();
+        res.status(200).json({
+            status: 'success',
+            message: 'Successfully got the data.',
+            data: db.data
+        });
+    }
+    catch(err) {
+        res.status(500).json({
+            status: 'fail',
+            message: 'Failed to get the data.'
+        });
+    }
+});
+
 // Listener
 const port = 3000;
 app.listen(port, () => console.log("Server is running on http://localhost:" + port));
