@@ -24,7 +24,12 @@ app.use(express.json());
 app.use(helmet());
 app.use(limiter);
 app.use(cors({
-    origin: 'https://dev-form-eight.vercel.app'
+    origin: [
+        'http://localhost:3000',
+        'http://localhost:5173',
+        'http://127.0.0.1:5500',
+        'https://dev-form-eight.vercel.app'
+    ]
 }));
 
 // Routes
